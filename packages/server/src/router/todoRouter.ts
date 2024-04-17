@@ -19,5 +19,28 @@ export const todoRouter = trpc.router({
                 isCompleted: false
             }
         })
-    })
+    }),
+    delete: trpc.procedure.input(z.object({id: z.string()}))
+    .mutation(({input})=>{
+        const id = input.id;
+
+        return prisma.todo.delete({
+            where: {
+                id
+            }
+        })
+    }),
+    update: trpc.procedure.input(z.object({id: z.string(), isCompleted: z.boolean()}))
+    .mutation(({input})=>{
+        const id = input.id;
+
+        return prisma.todo.update({
+            where: {
+                id
+            },
+            data:{
+                isCompleted: input.isCompleted
+            }
+        })
+    }),
 });

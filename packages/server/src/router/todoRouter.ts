@@ -3,7 +3,8 @@ import { prisma } from "../lib/prismaClient";
 import { trpc } from "../lib/trpc";
 
 export const todoRouter = trpc.router({
-    list: trpc.procedure.query(()=>{
+    list: trpc.procedure.query(({ ctx })=>{
+        console.log(ctx.user)
         // const todos = await prisma.todo.findMany();
         // return todos;
 
@@ -31,7 +32,8 @@ export const todoRouter = trpc.router({
         })
     }),
     update: trpc.procedure.input(z.object({id: z.string(), isCompleted: z.boolean()}))
-    .mutation(({input})=>{
+    .mutation(({ctx, input})=>{
+        console.log(ctx.user);
         const id = input.id;
 
         return prisma.todo.update({

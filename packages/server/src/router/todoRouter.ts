@@ -33,7 +33,7 @@ export const todoRouter = trpc.router({
     }),
     update: trpc.procedure.input(z.object({id: z.string(), isCompleted: z.boolean()}))
     .mutation(({ctx, input})=>{
-        console.log(ctx.user);
+        // console.log(ctx.user);
         const id = input.id;
 
         return prisma.todo.update({

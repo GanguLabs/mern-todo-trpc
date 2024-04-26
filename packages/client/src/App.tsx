@@ -24,7 +24,7 @@ function App() {
     <trpc.Provider queryClient={queryClient} client={trpcClient}>
       <QueryClientProvider client={queryClient}>
         <div className='max-w-xl mx-auto'>
-          {/* <div className='grid grid-cols-4 gap-x-4 '>
+          <div className='grid grid-cols-4 gap-x-4 '>
             <a href='https://vitejs.dev' target='_blank'>
               <img src='/vite.svg' className='logo' alt='Vite logo' />
             </a>
@@ -41,7 +41,7 @@ function App() {
                 alt='express logo'
               />
             </a>
-          </div> */}
+          </div>
           <div className='text-center text-3xl font-bold text-gray-700'>
             <h1>Vite + React | Express | tRPC</h1>
             <h3>npm workspaces</h3>
